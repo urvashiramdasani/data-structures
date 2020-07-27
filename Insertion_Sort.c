@@ -8,17 +8,19 @@ void swap(int *num1, int *num2) {
 }
 
 // function to implement insertion sort recursively
+/* TRACE TO UNDERSTAND */
 void insertionsort(int arr[], int n) {
   if(n == 1) return;
 
   // sort the last n-1 elements
   insertionsort(arr, n-1);
-  int d = n-1;
-  while(d>0 && arr[d-1]>arr[d]) {
-    swap(&arr[d-1], &arr[d]);
+  int d = n-2;
+  int last = arr[n-1];
+  while(d>=0 && arr[d] > last) {
+    arr[d+1] = arr[d];
     d--;
   }
-  arr[d+1] = 
+  arr[d+1] = last;
 }
 
 int main(void) {
@@ -45,7 +47,9 @@ int main(void) {
   for(int i=0; i<n; i++) printf("%d ", arr[i]);
 
   // Recursive Approach
-
+  insertionsort(arr, n);
+  printf("\nArray after Recursive Sort : ");
+  for(int i=0;i<n;i++) printf("%d ", arr[i]);
 
   return 0;
 }
