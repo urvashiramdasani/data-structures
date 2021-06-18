@@ -99,4 +99,16 @@ Open addressing -
 1. Table may become full and ranging becomes mandatory   2. Extra care required for clustering   3. Cache friendly   
 4. Extra space may be required to perform same performance as chaining
 
+Linear probing has best cache performance but suffers from clustering. It is easy to compute. Quadratic probing has both in between. 
+Double hashing poor cache performance but no clustering. It is computationally costly.
+
+
+S.No.	Seperate Chaining	                                                                                                  Open Addressing
+1.	Chaining is Simpler to implement.	                                                                                Open Addressing requires more computation.
+2.	In chaining, Hash table never fills up, we can always add more elements to chain.	                                    In open addressing, table may become full.
+3.	Chaining is Less sensitive to the hash function or load factors.	                                                           Open addressing requires extra care for to avoid clustering and load factor.
+4.	Chaining is mostly used when it is unknown how many and how frequently keys may be inserted or deleted.	                  Open addressing is used when the frequency and number of keys is known.
+5.	Cache performance of chaining is not good as keys are stored using linked list.	                                    Open addressing provides better cache performance as everything is stored in the same table.
+6.	Wastage of Space (Some Parts of hash table in chaining are never used).	                                    In Open addressing, a slot can be used even if an input doesn't map to it.
+7.	Chaining uses extra space for links.	                                                                        No links in Open addressing
 */
