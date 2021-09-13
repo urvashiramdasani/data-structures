@@ -1,3 +1,6 @@
+// Advantages - no preallocation of nodes, insertion and deletion
+// Binary search O(nlogn) is not allowed in linkedlists. Advance linked lists called skip lists do some extra overhead and search faster.
+
 #include<stdio.h>
 #include<stdlib.h>
 struct node
