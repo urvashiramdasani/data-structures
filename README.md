@@ -45,6 +45,7 @@ of data structures. If you find any edits, feel free to contact me!
 | Doubly Linked List | [Code](../master/Linked-List/doubly-linked-list.c) |
 | Singly Linked List | [Code](../master/Linked-List/linked-list.c) |
 | Polynomial Addition | [Code](../master/Linked-List/polynomial-addition-linked-list.c) |
+| Merge two sorted Linked Lists | [Code](../master/Linked-List/merge-sorted-list.cpp) |
 
 ### Queue
 | Implementation | Files |
