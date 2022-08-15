@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <climits>
+#include <stack>
 
 using namespace std;
 
@@ -61,6 +63,17 @@ void nodesAtDistanceK(Node* root, int k, int x) {
     }
 }
 
+// Time Complexity O(n), Space Complexity O(h)
+void maxNodeBT(Node* root, int& maxNode) {
+    if(root) {
+        if(root -> key > maxNode)
+            maxNode = root -> key;
+
+        maxNodeBT(root -> left, maxNode);
+        maxNodeBT(root -> right, maxNode);
+    }
+}
+
 // Time Complexity theta(n), Space Complexity O(n) or theta(width)
 void levelOrderTraversal(Node* root) {
     if(root) {
@@ -89,6 +102,55 @@ int size(Node* root) {
     return size(root -> left) + size(root -> right) + 1;
 }
 
+// void inorderIterative(Node* root) {
+//     if(root) {
+//         stack<Node* > s;
+//         Node* curr = root;
+
+//         while(curr) {
+//             s.push(curr);
+//             curr = curr -> left;
+//         }
+
+//         while(!s.empty()) {
+//             curr = s.top();
+//             s.pop();
+//             cout << curr -> key << " ";
+            
+//             if(curr -> left)
+//                 s.push(curr -> left);
+            
+//             if(curr -> right)
+//                 s.push(curr -> right);
+//         }
+//     }
+// }
+
+void insert(Node* root, int key) {
+    if(root) {
+        queue<Node* > q;
+        q.push(root);
+        Node* newNode = new Node(key);
+
+        while(!q.empty()) {
+            Node* curr = q.front();
+            q.pop();
+
+            if(!curr -> left) {
+                curr -> left = newNode;
+                return;
+            } else
+                q.push(curr -> left);
+
+            if(!curr -> right) {
+                curr -> right = newNode;
+                return;
+            } else
+                q.push(curr -> right);
+        }
+    }
+}
+
 int main() {
     Node* root = new Node(10);
     root -> left = new Node(20);
@@ -107,6 +169,15 @@ int main() {
     cout << "\nLevel Order Traversal : ";
     levelOrderTraversal(root);
     cout << "\nSize of Binary Tree : " << size(root);
+    int maxNode = INT_MIN;
+    maxNodeBT(root, maxNode);
+    cout << "\nMaximum in Binary Tree : " << maxNode;
+    // cout << "\nIterative Inorder Traversal : ";
+    // inorderIterative(root);
+    int key = 60;
+    insert(root, key);
+    cout << "\nInorder Traversal after insertion : ";
+    inorder(root);
 
     // Empty Tree
     // Node* root = NULL;
